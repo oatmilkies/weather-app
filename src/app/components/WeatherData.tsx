@@ -50,12 +50,13 @@ type WeatherData = {
 
 const queryClient = new QueryClient();
 
+
 export default function WeatherData({}: Props) {
   const { isLoading, error, data } = useQuery<WeatherData>(
     "weatherData",
     async () => {
       const { data } = await axios.get(
-        "https://api.openweathermap.org/data/2.5/weather?q=Toronto&APPID=f5defd218cc58fba98df22273067ded1"
+        "https://api.openweathermap.org/data/2.5/weather?q=Toronto&APPID=${process.env.NEXT_PUBLIC_WEATHER_KEY}"
       );
       return data;
     }
@@ -66,5 +67,23 @@ export default function WeatherData({}: Props) {
 
   console.log(data)
 
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return (
+    <main className="px-3 max-w-7xl mx-auto flex flex-col gap-9 w-full pb-10 pt-4">
+      {/* Today's weather */}
+      <section>
+        <div>
+          <h2 className="flex gap-1 text-2xl items-end">
+            Today
+          </h2>
+          <div>
+
+          </div>
+        </div>
+      </section>
+      {/* 7 day forecast */}
+      <section>
+
+      </section>
+    </main>
+  );
 }
