@@ -56,7 +56,7 @@ export default function WeatherData({}: Props) {
     "weatherData",
     async () => {
       const { data } = await axios.get(
-        "https://api.openweathermap.org/data/2.5/weather?q=Toronto&APPID=${process.env.NEXT_PUBLIC_WEATHER_KEY}"
+        `https://api.openweathermap.org/data/2.5/weather?q=Toronto&APPID=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
       );
       return data;
     }
