@@ -65,6 +65,8 @@ export default function WeatherData({}: Props) {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
 
+  const todaysData = data
+
   console.log(data)
 
   return (
